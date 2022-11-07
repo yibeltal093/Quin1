@@ -1,6 +1,6 @@
 import org.testng.annotations.Test;
 
-public class NewTest {
+public class SanityTest {
   @Test
   public void firstTestNGTest() {
   }
