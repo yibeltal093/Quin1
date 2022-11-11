@@ -3,5 +3,4 @@ public class City {
 	public City(String name) {
 		this.Name = name;
 	}
-
 }

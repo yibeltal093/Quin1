@@ -9,5 +9,4 @@ public class SanityTest {
 	  String myString = "Myname";
 	  var mystring1 = "other name";
   }
-  
 }
