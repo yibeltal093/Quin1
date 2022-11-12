@@ -8,8 +8,7 @@ public class DataProviderTests {
 
 		var actualState = States.Texas.Name;
 
-		Assert.assertEquals(actualState, expectedState, 
-				"State name should be returned");
+		Assert.assertEquals(actualState, expectedState, "State name should be returned");
 	}
 	
 	@Test
@@ -18,8 +17,7 @@ public class DataProviderTests {
 
 		var actualState = States.Washington.Name;
 
-		Assert.assertEquals(actualState, expectedState, 
-				"State name should be returned");
+		Assert.assertEquals(actualState, expectedState, "State name should be returned");
 	}
 	
 	@Test
@@ -28,8 +26,7 @@ public class DataProviderTests {
 
 		var actualState = States.Oregon.Name;
 
-		Assert.assertEquals(actualState, expectedState, 
-				"State name should be returned");
+		Assert.assertEquals(actualState, expectedState, "State name should be returned");
 	}
 	
 	@Test
@@ -37,8 +34,7 @@ public class DataProviderTests {
 		var expectedAbbriviation = "TX";
 		var actualAbbriviation = States.Texas.Abbriviation;
 
-		Assert.assertEquals(actualAbbriviation, expectedAbbriviation, 
-				"State initial should be returned");
+		Assert.assertEquals(actualAbbriviation, expectedAbbriviation, "State initial should be returned");
 	}
 	
 	@Test
@@ -47,8 +43,7 @@ public class DataProviderTests {
 		
 		var actualState = getState(LocationObjectMothers.newOrleans());
 		
-		Assert.assertEquals(actualState.Name, expectedState, 
-				"State should be returned");
+		Assert.assertEquals(actualState.Name, expectedState, "State should be returned");
 	}
 	private State getState(LocationObjectMother mother) {
 		return mother.State;
@@ -60,22 +55,10 @@ public class DataProviderTests {
 		
 		var actualCity = getCity(LocationObjectMothers.Texas());
 		
-		Assert.assertEquals(actualCity.Name, expectedCity, 
-				"City should be returned");
+		Assert.assertEquals(actualCity.Name, expectedCity, "City should be returned");
 		
 	}
 	private City getCity(LocationObjectMother mother) {
 		return mother.City;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 }

@@ -1,6 +1,4 @@
-
 public class State {
-
 	public String Name;
 	public String Abbriviation;
 
