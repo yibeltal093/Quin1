@@ -1,0 +1,64 @@
+Test Case Design(System testing):
+
+Label/Title: Menu bar testing
+summary: Check if the menu bar "ARTISTS" directory links goes to the right pages
+Pre-condition: The linke must display the related page
+		   I must have an option to goes back to home page
+		   The active menu bar link should be noticeable
+Tracebility to the Requirement: user should be able to click on any artist and read the story
+Steps: Click on "ARTISTS" link
+    => ARTISTS page displayed with an artists short history
+    => For each refresh random artist will display on the page
+Expected result: Expected a staic front page and a choice to click a specific artist on the side
+			menu bar, but all artists names are at the bottom of the page.
+
+Label/Title: Use Search on ARTISTS page
+summary: Check if search button able to find an artist with complete or partial name of the artist
+Pre-condition: Type a specific full/part of an artists name that are on the list
+Tracebility to the Requirement: when names typed on the search box related artists should displayed
+Steps: Click on "Search" link
+    => type a disired artist's name (Jack Bates)
+    => Click on serach
+Expected result: Jack Bates page should be displayed
+
+Label/Title: Shopping Merchendises
+summary: Shopping merchendises and adding to cart
+Pre-condition: Select an item to buy, choose size and add to cart
+Tracebility to the Requirement: When the item is added to the cart the cart should display the same item and quantity
+Steps: Click on "Shop" =>"Merch"
+    => Click on the item and choose the size
+    => Click on "ADD TO CART"
+Expected result: The specific item and price should display in the cart.
+
+Label/Title: Login
+summary: Login to my acount using email and password
+Pre-condition: Allows only users with login acounts
+Tracebility to the Requirement: If email and password format is wrong it should display Error message the indicates the problem
+					  If the user doesn't have an account it should display error message and option to login
+Steps: Click on "Login"
+    => Enter rondom letters (not specifically email format)
+    => Enter password
+    => Click on "Login"
+Expected result: Display Wrong email format error message.
+
+
+Label/Title: Sign Up
+summary: Login to my acount using first name, last name, email and password
+Pre-condition: Enter values to each input boxes
+Tracebility to the Requirement: If email and password format is wrong it should display Error message the indicates the problem
+Steps: Click on "Sign up"
+    => Enter rondom letters (not specifically email format)
+    => Enter short password (123)
+    => Click on "Sign up"
+Expected result: Display Wrong email format error message.
+
+
+Label/Title: Regester new product
+summary: request suport and register a new product
+Pre-condition: Select from product lists and insert valid serial number and date
+Tracebility to the Requirement: Check serial number is in the right format and date is at least earlier than current time
+Steps: Click on "support/Register Gear/ gear registration"
+    => Select product from list
+    => Enter serial number 8 digits
+    => upload reciept/or not
+Expected result: Register item and display details
