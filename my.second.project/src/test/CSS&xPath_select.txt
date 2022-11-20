@@ -1,0 +1,17 @@
+CSS selector
+1. $("input[id='userName']")
+2. $(".col-12 mt-4 col-md-6 button")
+3. $("footer span")
+4. $(".nav-menu-container>ul>li")
+5. $("#oldSelectMenu option[value='4']")
+6. document.getElementById("sliderValue").value
+7. document.getElementById("userName").value = "Unknown"
+
+xPath Selector
+1. $x("//input[@id='userName']")
+2. $x("//div[@class='col-12 mt-4 col-md-6']//button")
+3. $x("//div[@class='rt-td' and text()='Vega']")
+4. $x("//input[@id='impressiveRadio']/parent::*")
+5. $x("//input[@id='impressiveRadio']/ancestor::*")
+6. $x("//div[@class='col-12 mt-4 col-md-6']//div//input[@id='impressiveRadio']")
+7. $x("//div[@class='col-12 mt-4 col-md-6']//button[contains(text(),'Click')]")
