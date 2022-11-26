@@ -1,0 +1,110 @@
+Sakila Database
+
+1. Get 10 cities in descending alphabetical order. 
+SELECT city from sakila.city ORDER BY city DESC LIMIT 10;
+_________________________________________________________________________________
+
+2. Get all films with "airplane" in the title.
+SELECT title FROM sakila.film WHERE title LIKE '%airplane%';
+_________________________________________________________________________________
+
+3. Get the highest payment amount.
+SELECT MAX(amount) FROM sakila.payment;
+_________________________________________________________________________________
+
+4. Get the number of records in the customer table for store id #1. 
+SELECT COUNT(customer_id) FROM sakila.customer WHERE store_id = 1;
+_________________________________________________________________________________
+
+5. Get all payment records for customer with email address "NANCY.THOMAS@sakilacustomer.org"
+SELECT p.payment_id, p.customer_id, p.staff_id, p.rental_id, p.amount, p.payment_date, p.last_update
+ FROM sakila.payment AS p JOIN sakila.customer AS c ON p.customer_id = c.customer_id
+WHERE c.email = 'NANCY.THOMAS@sakilacustomer.org';
+_________________________________________________________________________________
+ 
+6. Use a View to get the film info for actor Bob Fawcett.
+SELECT film_info FROM actor_info WHERE first_name = 'Bob' AND last_name = 'Fawcett';
+_________________________________________________________________________________
+
+7. Use a Stored Procedure to get the 4 inventory ids for the film "Alien Center" at Store #2. 
+SELECT inventory_id FROM sakila.inventory AS i LEFT JOIN sakila.film AS f ON i.film_id = f.film_id
+ WHERE store_id = 2 AND title = 'Alien Center' LIMIT 4;
+_________________________________________________________________________________
+
+8. Insert a new store. Ensure that you use TRANSACTION. (This one is possible but it's tough! 
+Pay attention to constraints and the order that you are inserting data.)  
+START TRANSACTION;
+INSERT INTO sakila.staff (first_name, last_name, address_id, email, store_id, `active`, username)
+VALUES("jOhn", "Doe", "52", "rand@gmail.com", "2", "1", "newJohn");
+SET @staffId = LAST_INSERT_ID();
+
+INSERT INTO sakila.address(address, district, city_id, phone, location)
+VALUES("1531 Sal Drive", "Esfahan", 162, "6488856936185", ST_GeomFromText('POINT (51.6746246 32.6524674)'));
+
+SET @addressId = last_insert_id();
+
+INSERT INTO sakila.store (address_id, manager_staff_id) 
+VALUES(@addressId, @staffId);
+
+SET @storeId = LAST_INSERT_ID();
+/*9. Update the timestamp to the current date/time for the new store
+ you entered in the previous question. */
+UPDATE staff 
+SET store_id = @storeId
+where staff_id = @staffId;
+
+ROLLBACK;
+_________________________________________________________________________________
+
+10. Delete the new store. 
+START TRANSACTION;
+SET  SQL_SAFE_UPDATES = 0;
+UPDATE staff 
+SET store_id = 1 WHERE last_name = 'Doe';
+
+DELETE s.* FROM store AS s
+INNER JOIN address AS a ON a.address_id = s.address_id
+WHERE a.address = '1531 Sal Drive';
+SET SQL_SAFE_UPDATES = 1;
+ROLLBACK;
+_________________________________________________________________________________
+
+11. Using one SQL statement, get how many films are there in each rating category.
+SELECT COUNT(rating) AS quantity, rating
+FROM film GROUP BY rating ORDER BY rating;
+_________________________________________________________________________________
+
+12. Get (in order) the first and last names of the 3 customers who have spent the most, 
+along with how much they have paid overall.
+SELECT c.first_name AS First, c.last_name AS Last, SUM(p.amount) AS Total
+FROM payment AS p
+INNER JOIN customer AS c ON c.customer_id = p.customer_id
+GROUP BY c.customer_id
+ORDER BY Total DESC LIMIT 3;
+_________________________________________________________________________________
+
+13. Get all movies rented by the customer who spent the most. (Hint: This will either require nested queries, 
+or more than two joins. one approach is much shorter than the other.)
+SELECT f.title 
+FROM film AS f
+WHERE f.film_id IN(
+	SELECT inventory_id FROM rental AS r
+    INNER JOIN customer AS c ON c.customer_id = r.customer_id
+    WHERE c.customer_id = (
+		SELECT c.customer_id
+        FROM payment AS p
+        INNER JOIN customer AS c ON c.customer_id = p.customer_id
+        GROUP BY c.customer_id
+        ORDER BY SUM(p.amount) DESC LIMIT 1
+    )
+) ;
+_________________________________________________________________________________
+
+14. Get the first and last names of all customers who spent more than $150, along with how much they spent.
+SELECT c.first_name, c.last_name, SUM(p.amount) AS total_spent
+FROM customer AS c
+JOIN payment AS p
+ON p.customer_id = c.customer_id
+GROUP BY c.customer_id
+HAVING total_spent > 150
+ORDER BY total_spent;
