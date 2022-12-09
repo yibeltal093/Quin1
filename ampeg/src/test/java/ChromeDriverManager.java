@@ -1,0 +1,10 @@
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ChromeDriverManager extends DriverManager {
+	@Override
+	public void createDriver() {
+		var driverPath = "C:\\Users\\yibe\\Downloads\\chromedriver_win32\\chromedriver.exe";
+		System.setProperty("webdriver.chrome.driver", driverPath);
+		super.setDriver(new ChromeDriver());
+	}
+}
