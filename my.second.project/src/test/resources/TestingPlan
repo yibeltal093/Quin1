@@ -1,0 +1,58 @@
+==================Introduction==================================
+This test document is prepared as a testing plan for Apparels shopping Website. 
+The test document includes different test strategies, resource planning, 
+test environments and schedules that will be utilized in the test.
+==================Test Strategy==================================
+•	Scope of Testing
+The scope is to ensure that the functionality of the website is easy and clear for users and delivers as expected.
+•	Testing types
+This document is prepared for unit testing, API Testing and Integration testing using agile testing methodology
+•	Risk and issues
+System and installation compatibility will not be tested in this scope. 
+If the software is not compatible to users machine it may cause a problem and need expertise to fix the issue.
+•	Test logistics
+Two QA tester and one Test lead will be needed to perform the test.
+==================Test Objectives================================
+The objective of this test is to test that all the expected functionalities of the software is performing as expected.
+1.	Customers should be able to register to the system and able to see the expected page.
+2.	If the customers already have an account, they should be able to login and see their account page.
+3.	Customers should be able to search products by typing part of the names of the products or category of the product.
+4.	Customers should be able to checkout and online payment of the orders
+5.	Admin should be able to create/edit/delete products from the site
+6.	Admin should be able to manage customers
+7.	Admin should be able to manage shipping
+8.	Admin should be able to manage roles/ permissions
+==================Test Criteria===================================
+•	Suspension: if the test is not passing 70% of the test, the test should be stopped and wait for the developers to update
+•	Exit: if the test is passing 95% of the test and the site may be released.
+==================Resource Planning=============================
+The two QA testers and a test lead expected to spend 40 hours per week. 
+The test results will be reported for each week and discussed with developers based on the results. 
+The testing team will communicate continuously and have one forma agile meeting every day for 15-20 minutes. 
+The free version of eclipse IDE and testNG will be used for this project
+==================Test Environment==============================
+This test will be use testNG framework in eclipse IDE to run. The website will be tested on Chrome, Microsoft edge and Safari.
+==================Schedule and Estimation========================
+Day	task	                            Team/
+1	Registration test	                 QA1
+1	Login test	                         QA2
+2	Product search	                     QA1
+2	checkout, and payment	             QA2
+3	Create products	                     QA1
+3	Edit and delete products	         QA2
+4	Manage customers	                 QA1
+4	Manage shipping	                     QA2
+5	Manage role/permission	             QA1
+5	Manage payment	                     QA2
+
+
+==================Test Deliverables==============================
+Test plan
+Test Design
+Test Scripts
+Simulators or Emulators
+Test data
+Error and execution logs
+Test results
+Defect reports
+Release notes
